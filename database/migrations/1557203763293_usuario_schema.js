@@ -6,16 +6,18 @@ const Schema = use('Schema')
 class UsuarioSchema extends Schema {
   up () {
     this.raw(`
-          create table usuario (
-            in_usuario_id integer unsigned not null auto_increment,
-            va_nome varchar(250) not null,
-            dt_data_nascimento date,
-            va_celular varchar(15) not null,
-            va_telefone varchar(15) default null,
-            va_email varchar(250) not null unique,
-            va_password varchar(250) not null,
-            va_cpf varchar(14),    
-            constraint usuario_pkey primary key(in_usuario_id)
+        CREATE TABLE usuario (
+          in_usuario_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+          va_nome VARCHAR(250) NOT NULL,
+          dt_data_nascimento date DEFAULT NULL,
+          va_celular VARCHAR(15) NOT NULL,
+          va_telefone VARCHAR(15) DEFAULT NULL,
+          va_email VARCHAR(250) NOT NULL UNIQUE,
+          va_password VARCHAR(250) NOT NULL,
+          en_genero enum('masculino', 'feminino', 'nao-informado'),
+          va_cpf VARCHAR(14) DEFAULT NULL,
+          CONSTRAINT usuario_pkey PRIMARY KEY(in_usuario_id),
+          CONSTRAINT chk_en_genero CHECK (en_genero = 'masculino' or en_genero = 'feminino' or en_genero = 'nao-informado')
         );
     `)
   }
