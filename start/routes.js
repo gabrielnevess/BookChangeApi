@@ -14,8 +14,13 @@
 */
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
-const Route = use('Route')
+const Route = use('Route');
 
-Route.get('/', () => {
-  return { greeting: 'Hello world in JSON' }
-})
+Route.post('/registrar', 'UsuarioController.registrar');
+Route.post('/autenticar', 'UsuarioController.autenticar');
+
+Route.group(() => {
+  Route
+    .resource('generos', 'GeneroController')
+    .apiOnly() //retira as rotas de formulário
+}).middleware('auth');
