@@ -18,11 +18,8 @@ const Route = use('Route');
 
 Route.post('/registrar', 'UsuarioController.registrar');
 Route.post('/autenticar', 'UsuarioController.autenticar');
-Route.get('/generos', 'GeneroController.index');
 Route.get('/anuncios', 'AnuncioController.index');
 
 // Route.group(() => {
-//   Route
-//     .resource('generos', 'GeneroController')
-//     .apiOnly() //retira as rotas de formulário
+//   Route.resource('anuncios', 'AnuncioController').apiOnly()
 // }).middleware('auth');

@@ -10,6 +10,7 @@ const Anuncio = use('App/Models/Anuncio');
  * Resourceful controller for interacting with anuncios
  */
 class AnuncioController {
+
   /**
    * Show a list of all anuncios.
    * GET anuncios
@@ -19,8 +20,15 @@ class AnuncioController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index ({ request, response, view }) {
-    const anuncio = await Anuncio.query().with('usuario').fetch();
+  async index({ request, response, view, auth }) {
+    const anuncio = await Anuncio
+      .query()
+      .with('usuario', (builder) => {
+        builder
+          .setHidden(['va_password'])
+          .with('endereco')
+      })
+      .fetch();
     return anuncio;
   }
 
@@ -32,18 +40,18 @@ class AnuncioController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store ({ request, response }) {
+  async store({ request, response }) {
   }
 
-   /**
-   * Display a single anuncio.
-   * GET todos/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
+  /**
+  * Display a single anuncio.
+  * GET todos/:id
+  *
+  * @param {object} ctx
+  * @param {Request} ctx.request
+  * @param {Response} ctx.response
+  * @param {View} ctx.view
+  */
   async show({ params, request, response, view }) {
   }
 
@@ -55,7 +63,7 @@ class AnuncioController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update ({ params, request, response }) {
+  async update({ params, request, response }) {
   }
 
   /**
@@ -66,7 +74,7 @@ class AnuncioController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy ({ params, request, response }) {
+  async destroy({ params, request, response }) {
   }
 }
 

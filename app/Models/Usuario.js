@@ -19,6 +19,10 @@ class Usuario extends Model {
         return this.hasMany('App/Models/Token')
     }
 
+    endereco() {
+        return this.hasOne('App/Models/Endereco', 'in_usuario_id', 'in_usuario_id');
+    }
+
     static get table() {
         return 'usuario';
     }
