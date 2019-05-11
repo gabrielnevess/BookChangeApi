@@ -21,7 +21,9 @@ class AnuncioController {
    * @param {View} ctx.view
    */
   async index({ request, response, view, auth }) {
-    const anuncio = await Anuncio
+
+    //retorno anuncio, usuario e endereço
+    const query = await Anuncio
       .query()
       .with('usuario', (builder) => {
         builder
@@ -29,6 +31,16 @@ class AnuncioController {
           .with('endereco')
       })
       .fetch();
+    const data = query.toJSON();
+
+    // remove o endereço do usuário do anúncio
+    let anuncio = data.map((data) => {
+      if(data.en_status_endereco_visivel === "desativado"){
+        delete data.usuario.endereco;
+      }
+      return data;
+    });
+
     return anuncio;
   }
 
