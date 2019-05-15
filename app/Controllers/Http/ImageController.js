@@ -5,12 +5,12 @@
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 /**
- * Resourceful controller for interacting with enderecos
+ * Resourceful controller for interacting with images
  */
-class EnderecoController {
+class ImageController {
   /**
-   * Show a list of all enderecos.
-   * GET enderecos
+   * Show a list of all images.
+   * GET images
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -21,8 +21,8 @@ class EnderecoController {
   }
 
   /**
-   * Create/save a new endereco.
-   * POST enderecos
+   * Create/save a new image.
+   * POST images
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -32,8 +32,8 @@ class EnderecoController {
   }
 
   /**
-   * Display a single endereco.
-   * GET enderecos/:id
+   * Display a single image.
+   * GET images/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -44,8 +44,8 @@ class EnderecoController {
   }
 
   /**
-   * Update endereco details.
-   * PUT or PATCH enderecos/:id
+   * Update image details.
+   * PUT or PATCH images/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -55,8 +55,8 @@ class EnderecoController {
   }
 
   /**
-   * Delete a endereco with id.
-   * DELETE enderecos/:id
+   * Delete a image with id.
+   * DELETE images/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -66,4 +66,4 @@ class EnderecoController {
   }
 }
 
-module.exports = EnderecoController
+module.exports = ImageController
