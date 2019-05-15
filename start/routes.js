@@ -19,6 +19,7 @@ const Route = use('Route');
 Route.post('/registrar', 'UsuarioController.registrar');
 Route.post('/autenticar', 'UsuarioController.autenticar');
 Route.get('/anuncios', 'AnuncioController.index');
+Route.post('/anuncios/:id/images', 'ImageController.store');
 
 // Route.group(() => {
 //   Route.resource('anuncios', 'AnuncioController').apiOnly()

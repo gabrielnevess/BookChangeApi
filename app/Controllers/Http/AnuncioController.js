@@ -30,6 +30,7 @@ class AnuncioController {
           .setHidden(['va_password'])
           .with('endereco')
       })
+      .with('images')
       .fetch();
     const data = query.toJSON();
 

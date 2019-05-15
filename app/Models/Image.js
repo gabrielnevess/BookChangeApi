@@ -10,6 +10,9 @@ class Image extends Model {
     static get primaryKey() {
         return 'in_images_anuncio_id';
     }
+    static get foreignKey() {
+        return 'in_anuncio_id';
+    }
     static get createdAtColumn() {
         return null;
     }

@@ -24,6 +24,10 @@ class Anuncio extends Model {
     usuario() {
         return this.belongsTo('App/Models/Usuario', 'in_usuario_id', 'in_usuario_id');
     }
+
+    images() {
+        return this.hasMany('App/Models/Image', 'in_anuncio_id', 'in_anuncio_id');
+    }
 }
 
 module.exports = Anuncio
