@@ -65,6 +65,7 @@ class ImageController {
    * @param {View} ctx.view
    */
   async show({ params, request, response, view }) {
+    return response.download(Helpers.tmpPath(`uploads/${params.path}`));
   }
 
   /**

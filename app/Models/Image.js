@@ -19,6 +19,13 @@ class Image extends Model {
     static get updatedAtColumn() {
         return null;
     }
+    static get computed() {
+        return ['url']
+    }
+
+    getUrl({ path }) {
+        return `${Env.get('APP_URL')}/images/${path}`
+    }
 }
 
 module.exports = Image
