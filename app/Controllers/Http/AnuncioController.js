@@ -36,7 +36,7 @@ class AnuncioController {
 
     // remove o endereço do usuário do anúncio
     let anuncio = data.map((data) => {
-      if(data.en_status_endereco_visivel === "desativado"){
+      if (data.en_status_endereco_visivel === "desativado") {
         delete data.usuario.endereco;
       }
       return data;
