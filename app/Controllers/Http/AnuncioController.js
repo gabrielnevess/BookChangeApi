@@ -43,6 +43,7 @@ class AnuncioController {
     });
 
     return anuncio;
+    
   }
 
   /**
