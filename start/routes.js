@@ -19,7 +19,7 @@ const Route = use('Route');
 Route.post('/registrar', 'UsuarioController.registrar');
 Route.post('/autenticar', 'UsuarioController.autenticar');
 Route.get('/anuncios', 'AnuncioController.index');
-Route.post('/anuncios/:id/images', 'ImageController.store');
+Route.post('/anuncios/images/:id', 'ImageController.store');
 Route.get('images/:path', 'ImageController.show');
 
 // Route.group(() => {
