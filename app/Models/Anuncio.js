@@ -25,8 +25,8 @@ class Anuncio extends Model {
         return this.belongsTo('App/Models/Usuario', 'in_usuario_id', 'in_usuario_id');
     }
 
-    images() {
-        return this.hasMany('App/Models/Image', 'in_anuncio_id', 'in_anuncio_id');
+    imagens() {
+        return this.hasMany('App/Models/AnuncioImagens', 'in_anuncio_id', 'in_anuncio_id');
     }
 }
 

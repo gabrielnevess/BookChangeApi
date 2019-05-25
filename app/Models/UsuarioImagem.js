@@ -4,6 +4,7 @@
 const Model = use('Model')
 
 class UsuarioImagem extends Model {
+    
     static get table(){
         return 'usuario_imagem';
     }
@@ -16,6 +17,7 @@ class UsuarioImagem extends Model {
     static get updatedAtColumn(){
         return null;
     }
+
 }
 
 module.exports = UsuarioImagem

@@ -3,7 +3,7 @@
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model')
 
-class Image extends Model {
+class AnuncioImagens extends Model {
     static get table() {
         return 'anuncio_imagens';
     }
@@ -19,7 +19,7 @@ class Image extends Model {
     static get updatedAtColumn() {
         return null;
     }
-    
+
 }
 
-module.exports = Image
+module.exports = AnuncioImagens

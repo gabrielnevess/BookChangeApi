@@ -16,12 +16,18 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route');
 
-Route.post('/registrar', 'UsuarioController.registrar');
-Route.post('/autenticar', 'UsuarioController.autenticar');
+
+
+Route.post('/usuario/imagem/:id', 'UsuarioImagemController.store');
+Route.get('/anuncios/metrics', 'AnuncioController.metrics');
+Route.post('/anuncios/imagens/:id', 'AnuncioImagensController.store');
+Route.get('anuncio_imagens/:path', 'AnuncioImagensController.show');
+
 Route.get('/anuncios', 'AnuncioController.index');
-Route.post('/anuncios/images/:id', 'ImageController.store');
-Route.get('images/:path', 'ImageController.show');
+Route.post('/autenticar', 'UsuarioController.autenticar');
+Route.post('/registrar', 'UsuarioController.registrar');
+
 
 // Route.group(() => {
-//   Route.resource('anuncios', 'AnuncioController').apiOnly()
+  
 // }).middleware('auth');

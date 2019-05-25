@@ -10,7 +10,7 @@ const Anuncio = use('App/Models/Anuncio');
 /**
  * Resourceful controller for interacting with images
  */
-class ImageController {
+class AnuncioImagensController {
   /**
    * Show a list of all images.
    * GET images
@@ -34,13 +34,13 @@ class ImageController {
   async store({ request, response, params }) {
     const anuncio = await Anuncio.findOrFail(params.id);
 
-    const images = request.file('image', {
+    const images = request.file('imagem', {
       types: ['image'],
       size: ['2mb']
     });
 
     await images.moveAll(Helpers.tmpPath('uploads'), file => ({
-      name: `${Date.now()}-${file.clientName}`
+      name: `anuncio-imagens${Date.now()}-${file.clientName}`
     }));
 
     if (!images.movedAll()) {
@@ -50,7 +50,7 @@ class ImageController {
     await Promise.all(
       images
         .movedList()
-        .map(image => anuncio.images().create({ te_path: image.fileName }))
+        .map(imagem => anuncio.imagens().create({ te_path: imagem.fileName }))
     );
 
   }
@@ -91,4 +91,4 @@ class ImageController {
   }
 }
 
-module.exports = ImageController
+module.exports = AnuncioImagensController
