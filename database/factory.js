@@ -17,13 +17,28 @@ const Hash = use('Hash');
 
 Factory.blueprint('App/Models/Usuario', async (faker) => {
   return {
-    va_nome: faker.username(),
-    dt_data_nascimento: '1994-09-10',
-    va_celular: '' + (Math.floor(Math.random() * 9000000000) + 1000000000),
+    va_nome: faker.name(),
+    dt_data_nascimento: '1994-09-18',
+    va_celular: faker.phone(),
     va_telefone: '',
     va_email: faker.email(),
     va_password: await Hash.make(faker.password()),
     en_genero: (Math.floor(Math.random() * 2) + 1) == 1 ? "masculino" : "feminino",
-    va_cpf: '',
+    va_cpf: faker.cpf(),
   }
 })
+
+// Post blueprint
+Factory.blueprint('App/Models/Anuncio', (faker) => {
+    return {
+      va_titulo_livro: faker.sentence(),
+      va_autor_livro: faker.name(),
+      va_ano_livro: faker.year({min: 1900, max: 2100}),
+      en_estado: (Math.floor(Math.random() * 2) + 1) == 1 ? "novo" : "usado",
+      en_tipo_anuncio: (Math.floor(Math.random() * 2) + 1) == 1 ? "troca" : "venda",
+      en_status_anuncio: (Math.floor(Math.random() * 2) + 1) == 1 ? "ativo" : "desativado",
+      en_status_endereco_visivel: (Math.floor(Math.random() * 2) + 1) == 1 ? "ativo" : "desativado",
+      va_descricao: faker.paragraph(),
+      dt_data_criacao: faker.birthday()
+    }
+  })

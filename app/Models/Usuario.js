@@ -27,6 +27,10 @@ class Usuario extends Model {
         return this.hasOne('App/Models/UsuarioImagem', 'in_usuario_id', 'in_usuario_id');
     }
 
+    anuncios() {
+        return this.hasMany('App/Models/Anuncio', 'in_usuario_id', 'in_usuario_id');
+    }
+
     static get table() {
         return 'usuario';
     }
