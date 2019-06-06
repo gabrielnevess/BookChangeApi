@@ -5,7 +5,6 @@
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 const Anuncio = use('App/Models/Anuncio');
-const Database = use('Database')
 
 const client = require('prom-client');
 const collectDefaultMetrics = client.collectDefaultMetrics;
@@ -112,6 +111,9 @@ class AnuncioController {
   * @param {View} ctx.view
   */
   async show({ params, request, response, view }) {
+    const anuncio = await Anuncio.findOrFail(params.id);
+    await anuncio.load('imagens');
+    return anuncio;
   }
 
   /**

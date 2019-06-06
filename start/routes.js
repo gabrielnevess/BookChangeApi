@@ -19,9 +19,11 @@ const Route = use('Route');
 
 
 Route.post('/usuario/imagem/:id', 'UsuarioImagemController.store');
+
 Route.get('/anuncios/metrics', 'AnuncioController.metrics');
+Route.get('/anuncios/:id', 'AnuncioController.show');
 Route.post('/anuncios/imagens/:id', 'AnuncioImagensController.store');
-Route.get('anuncio_imagens/:path', 'AnuncioImagensController.show');
+Route.get('/anuncio_imagens/:path', 'AnuncioImagensController.show');
 
 Route.get('/anuncios', 'AnuncioController.index');
 Route.post('/autenticar', 'UsuarioController.autenticar');

@@ -22,7 +22,7 @@ Factory.blueprint('App/Models/Usuario', async (faker) => {
     va_celular: faker.phone(),
     va_telefone: '',
     va_email: faker.email(),
-    va_password: await Hash.make(faker.password()),
+    va_password: await Hash.make("12345"),
     en_genero: (Math.floor(Math.random() * 2) + 1) == 1 ? "masculino" : "feminino",
     va_cpf: faker.cpf(),
   }
@@ -33,7 +33,7 @@ Factory.blueprint('App/Models/Anuncio', (faker) => {
     return {
       va_titulo_livro: faker.sentence(),
       va_autor_livro: faker.name(),
-      va_ano_livro: faker.year({min: 1900, max: 2100}),
+      va_ano_livro: faker.year({min: 1900, max: 2019}),
       en_estado: (Math.floor(Math.random() * 2) + 1) == 1 ? "novo" : "usado",
       en_tipo_anuncio: (Math.floor(Math.random() * 2) + 1) == 1 ? "troca" : "venda",
       en_status_anuncio: (Math.floor(Math.random() * 2) + 1) == 1 ? "ativo" : "desativado",

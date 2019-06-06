@@ -16,8 +16,8 @@ const Factory = use('Factory');
 class UsuarioAnuncioSeeder {
   async run () {
     const usuario = await Factory.model('App/Models/Usuario').create();
-    const anuncio = await Factory.model('App/Models/Anuncio').make();
-    await usuario.anuncios().save(anuncio);
+    const anuncio = await Factory.model('App/Models/Anuncio').makeMany(50);
+    await usuario.anuncios().saveMany(anuncio);
   }
 }
 
