@@ -113,6 +113,7 @@ class AnuncioController {
   async show({ params, request, response, view }) {
     const anuncio = await Anuncio.findOrFail(params.id);
     await anuncio.load('imagens');
+    await anuncio.load('usuario', (builder) => builder.setHidden(['va_password']).with('endereco'))
     return anuncio;
   }
 
