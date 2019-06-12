@@ -147,3 +147,30 @@ from usuario
 	inner join genero_anuncio on genero_anuncio.in_anuncio_id = anuncio.in_anuncio_id
 	inner join genero on genero.in_genero_id = genero_anuncio.in_genero_id
 /*where usuario.in_usuario_id = 1*/
+
+select
+	genero_anuncio.in_genero_id,
+	anuncio.in_anuncio_id,
+	anuncio.va_titulo_livro,
+	anuncio.va_autor_livro,
+	anuncio.va_ano_livro,
+	anuncio.en_estado,
+	anuncio.te_descricao,
+	genero.va_genero,
+	anuncio.dt_data_criacao
+from anuncio 
+inner join genero_anuncio on 
+	genero_anuncio.in_anuncio_id = anuncio.in_anuncio_id 
+inner join genero on 
+	genero.in_genero_id = genero_anuncio.in_genero_id
+inner join (
+	select 
+		genero_anuncio.in_genero_id, 
+		genero_anuncio.in_anuncio_id from genero
+	inner join genero_anuncio on 
+		genero_anuncio.in_genero_id = genero.in_genero_id
+	where 
+		genero_anuncio.in_anuncio_id = 3
+) as mini_query on mini_query.in_genero_id = genero_anuncio.in_genero_id and
+anuncio.in_anuncio_id <> mini_query.in_anuncio_id
+
